@@ -1,0 +1,55 @@
+[
+  {
+    "alert_id": "AUTH-1001",
+    "user": "admin",
+    "source_ip": "45.12.88.19",
+    "time": "03:15 AM",
+    "failed_attempts": 15,
+    "status": "failed",
+    "log_source": "vpn-gateway",
+    "geo": "Unrecognized region",
+    "asset": "vpn-edge-01"
+  },
+  {
+    "alert_id": "EDR-2041",
+    "host": "finance-laptop-22",
+    "user": "jane.smith",
+    "process_name": "powershell.exe",
+    "command_line": "powershell.exe -EncodedCommand SQBtA...",
+    "severity_hint": "high",
+    "parent_process": "winword.exe",
+    "log_source": "endpoint-edr",
+    "sensor_status": "healthy"
+  },
+  {
+    "alert_id": "IAM-3380",
+    "user": "ceo",
+    "source_ip": "103.77.201.9",
+    "geo": "Unknown region",
+    "event": "impossible travel login",
+    "mfa_result": "not_prompted",
+    "severity_hint": "high",
+    "log_source": "identity-provider"
+  },
+  {
+    "alert_id": "LTM-4411",
+    "host": "sql-prod-03",
+    "user": "svc_backup",
+    "event": "lateral movement detected",
+    "command_line": "wmic /node:sql-prod-03 process call create cmd.exe",
+    "source_ip": "10.25.14.8",
+    "severity_hint": "high",
+    "log_source": "server-edr"
+  },
+  {
+    "alert_id": "DEX-5502",
+    "host": "eng-workstation-07",
+    "user": "maria",
+    "event": "archive and upload activity",
+    "tool": "rclone",
+    "destination": "s3://external-bucket",
+    "file_count": 184,
+    "severity_hint": "critical",
+    "log_source": "network-dlp"
+  }
+]
