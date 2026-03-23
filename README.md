@@ -1,13 +1,14 @@
 # AI-Powered SOC Analyst Agent
 
-AI-Powered SOC Analyst Agent is a Streamlit-based cybersecurity project that ingests alerts and logs, explains suspicious activity, classifies incident severity, and recommends analyst next steps. This version is fully free to run and is designed as a polished MVP for internships, portfolio demos, and early-career cybersecurity interviews.
+AI-Powered SOC Analyst Agent is a Streamlit-based cybersecurity dashboard that simulates how a SOC analyst triages alerts, explains suspicious activity, classifies incident severity, maps behavior to MITRE ATT&CK, and recommends the next response steps.
+
+This project is fully free to run, works with a local rule-based engine, and is designed to be strong for internships, portfolio demos, and early-career cybersecurity interviews.
 
 ## Dashboard Preview
 
-Add your screenshots to `docs/images/` and they will render on GitHub.
-
 ![SOC dashboard overview](docs/images/dashboard-overview.png)
 ![Alert triage result](docs/images/triage-result.png)
+![Recent investigations](docs/images/recent-investigations.png)
 
 ## Why this project stands out
 
@@ -28,6 +29,14 @@ Add your screenshots to `docs/images/` and they will render on GitHub.
 - Tune severity more realistically across brute-force, identity, endpoint, and exfiltration scenarios
 - Map alerts to MITRE ATT&CK techniques using free local rules
 - Track recent investigations directly in the dashboard
+
+## Key capabilities
+
+- SOC-style alert triage with structured explanations
+- Severity scoring for suspicious authentication, endpoint, identity, and exfiltration scenarios
+- MITRE ATT&CK mapping using local detection rules
+- Recent investigations panel for lightweight case tracking
+- Free offline-friendly workflow with no paid API dependency
 
 ## Project structure
 
@@ -64,15 +73,6 @@ pip install -r requirements.txt
 ```bash
 streamlit run app.py
 ```
-
-## GitHub screenshots
-
-- Save your best app screenshots inside `docs/images/`
-- Recommended names:
-  - `dashboard-overview.png`
-  - `triage-result.png`
-  - `recent-investigations.png`
-- GitHub will show them automatically in this README once the files are added and pushed
 
 ## Demo ideas
 
