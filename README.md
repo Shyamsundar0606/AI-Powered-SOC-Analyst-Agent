@@ -1,102 +1,108 @@
 # AI-Powered SOC Analyst Agent
 
-AI-Powered SOC Analyst Agent is a Streamlit-based cybersecurity dashboard that simulates how a SOC analyst triages alerts, explains suspicious activity, classifies incident severity, maps behavior to MITRE ATT&CK, and recommends the next response steps.
+AI-Powered SOC Analyst Agent is a web-based cybersecurity dashboard built with **React** and **FastAPI** that simulates how a SOC analyst triages alerts, explains suspicious activity, classifies incident severity, maps behavior to **MITRE ATT&CK**, and recommends next response steps.
 
-This project is fully free to run, works with a local rule-based engine, and is designed to be strong for internships, portfolio demos, and early-career cybersecurity interviews.
+This version replaces Streamlit with a custom frontend and API backend so the project feels more like a real product while keeping the same free local SOC analysis engine.
 
-## Dashboard Preview
+## Why this version is stronger
 
-![SOC dashboard overview](docs/images/dashboard-overview.png)
-![Alert triage result](docs/images/triage-result.png)
-![Recent investigations](docs/images/recent-investigations.png)
+- Modern React frontend instead of Streamlit
+- FastAPI backend around the SOC analysis engine
+- Better separation between UI and analysis logic
+- Stronger portfolio value for frontend + backend work
+- Still fully free to run locally
 
-## Why this project stands out
-
-- Combines AI, cybersecurity, SOC workflow thinking, and automation in one portfolio-ready build.
-- Demonstrates practical alert triage instead of a generic chatbot demo.
-- Supports realistic analyst tasks: log intake, suspicious behavior explanation, severity classification, and response recommendations.
-- Includes sample datasets so the project is demo-ready even before connecting real telemetry.
-- Runs without any paid API, cloud account, or external model dependency.
-
-## MVP features
+## Features
 
 - Analyze pasted logs, uploaded files, JSON alerts, and authentication logs
-- Classify alert severity as Low, Medium, High, or Critical
+- Classify severity as Low, Medium, High, or Critical
 - Explain why the activity appears suspicious
 - Suggest concrete incident response actions
-- Provide an investigation chat panel for follow-up questions
-- Use a free local rule-based engine for alert analysis and investigation guidance
-- Tune severity more realistically across brute-force, identity, endpoint, and exfiltration scenarios
-- Map alerts to MITRE ATT&CK techniques using free local rules
+- Ask follow-up investigation questions in a chat panel
+- Map detections to MITRE ATT&CK techniques
 - Track recent investigations directly in the dashboard
 
-## Key capabilities
+## Tech stack
 
-- SOC-style alert triage with structured explanations
-- Severity scoring for suspicious authentication, endpoint, identity, and exfiltration scenarios
-- MITRE ATT&CK mapping using local detection rules
-- Recent investigations panel for lightweight case tracking
-- Free offline-friendly workflow with no paid API dependency
+- React
+- HTML/CSS
+- FastAPI
+- Python
+- Local heuristic SOC analysis engine
 
 ## Project structure
 
 ```text
 AI-Powered-SOC-Analyst-Agent/
-|-- app.py
+|-- backend.py
 |-- requirements.txt
+|-- frontend/
+|   |-- package.json
+|   |-- vite.config.js
+|   |-- index.html
+|   |-- src/
+|       |-- App.jsx
+|       |-- main.jsx
+|       |-- styles.css
 |-- data/
 |   |-- sample_alerts.json
 |   |-- sample_auth_logs.txt
+|   |-- recent_investigations.json
 |-- src/
 |   |-- agent.py
+|   |-- history.py
 |   |-- models.py
 |   |-- parsers.py
 ```
 
-## Tech stack
+## Backend setup
 
-- Python
-- Streamlit
-- Local heuristic SOC analysis engine
-
-## Quick start
-
-1. Create a virtual environment.
-2. Install dependencies:
+1. Create and activate a virtual environment
+2. Install Python dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Start the app:
+3. Run the backend API
 
 ```bash
-streamlit run app.py
+uvicorn backend:app --reload
 ```
 
-## Demo ideas
+The backend will run on `http://127.0.0.1:8000`.
 
-- Load the bundled authentication log and explain a brute-force login attempt.
-- Upload a JSON alert file and ask the chat panel to justify the severity score.
-- Replace the sample data with your own NIDS, EDR, or SIEM-style alert exports.
-- Demonstrate that the project works completely offline without paid AI services.
-- Showcase recent investigation history and MITRE mapping during your demo.
+## Frontend setup
 
-## Suggested next roadmap
+1. Open a second terminal
+2. Go into the frontend folder
 
-### Phase 1
+```bash
+cd frontend
+```
 
-- Improve alert normalization for multiple log sources
-- Add richer case summaries and investigation notes
-- Polish the UI for portfolio screenshots
+3. Install frontend dependencies
 
-### Phase 2
+```bash
+npm install
+```
 
-- Add stronger MITRE ATT&CK mapping
-- Integrate NIDS or SIEM outputs
-- Support real-time alert ingestion
-- Add case history and analyst feedback loops
-- Add an optional local LLM later if you want deeper free-text reasoning
+4. Start the React app
+
+```bash
+npm run dev
+```
+
+The frontend will run on `http://127.0.0.1:5173`.
+
+## Demo flow
+
+- Load the sample authentication log and analyze a brute-force style alert
+- Load the sample JSON alert bundle and compare identity, endpoint, and exfiltration-style cases
+- Ask chat questions like:
+  - `Why is this suspicious?`
+  - `What should the analyst do first?`
+  - `What evidence should be checked next?`
 
 ## Resume title
 
