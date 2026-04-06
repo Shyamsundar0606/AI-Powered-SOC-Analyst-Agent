@@ -229,6 +229,65 @@ function App() {
                 <pre>{analysis.normalized_context}</pre>
               </div>
             </div>
+
+            <div className="card-grid">
+              <div className="info-card">
+                <h4>RAG Knowledge Context</h4>
+                {analysis.retrieved_knowledge?.length ? (
+                  <div className="stacked-list">
+                    {analysis.retrieved_knowledge.map((item, index) => (
+                      <article key={`${item.title}-${index}`} className="stacked-item">
+                        <span>{item.category}</span>
+                        <strong>{item.title}</strong>
+                        <p>{item.content}</p>
+                      </article>
+                    ))}
+                  </div>
+                ) : (
+                  <p>No additional local knowledge was retrieved for this alert.</p>
+                )}
+              </div>
+              <div className="info-card">
+                <h4>Threat Intelligence Enrichment</h4>
+                {analysis.threat_intelligence?.length ? (
+                  <div className="stacked-list">
+                    {analysis.threat_intelligence.map((item, index) => (
+                      <article key={`${item.indicator}-${index}`} className="stacked-item">
+                        <span>{item.type} | {item.severity}</span>
+                        <strong>{item.indicator}</strong>
+                        <p>{item.note}</p>
+                      </article>
+                    ))}
+                  </div>
+                ) : (
+                  <p>No enrichment data is available.</p>
+                )}
+              </div>
+            </div>
+
+            {analysis.incident_report && (
+              <div className="summary-card report-card">
+                <h4>Generated Incident Report</h4>
+                <div className="report-grid">
+                  <div>
+                    <span>Executive Summary</span>
+                    <p>{analysis.incident_report.executive_summary}</p>
+                  </div>
+                  <div>
+                    <span>Affected Scope</span>
+                    <p>{analysis.incident_report.affected_scope}</p>
+                  </div>
+                  <div>
+                    <span>Containment Priority</span>
+                    <p>{analysis.incident_report.containment_priority}</p>
+                  </div>
+                  <div>
+                    <span>Report Status</span>
+                    <p>{analysis.incident_report.report_status}</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </section>
         )}
 

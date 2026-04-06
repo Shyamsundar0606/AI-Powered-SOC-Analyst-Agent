@@ -8,10 +8,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from src.agent import analyze_alert, answer_investigation_question
-from src.history import clear_recent_investigations, get_recent_investigations, record_investigation
+from src.agent import answer_investigation_question
+from src.history import clear_recent_investigations, get_recent_investigations
 from src.models import AlertAnalysis
-from src.parsers import parse_input
+from src.service import analyze_with_context
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -72,18 +72,14 @@ def get_sample(sample_name: str) -> dict[str, str]:
 def analyze_payload(payload: dict[str, str]) -> dict[str, object]:
     raw_text = payload.get("raw_text", "")
     source_label = payload.get("source_label", "")
-    parsed = parse_input(raw_text, filename=source_label or None)
-    analysis = analyze_alert(parsed)
-    record_investigation(analysis)
+    analysis = analyze_with_context(raw_text, source_label)
     return asdict(analysis)
 
 
 @app.post("/api/analyze-file")
 async def analyze_file(file: UploadFile = File(...)) -> dict[str, object]:
     content = (await file.read()).decode("utf-8", errors="ignore")
-    parsed = parse_input(content, filename=file.filename)
-    analysis = analyze_alert(parsed)
-    record_investigation(analysis)
+    analysis = analyze_with_context(content, file.filename or "")
     return asdict(analysis)
 
 

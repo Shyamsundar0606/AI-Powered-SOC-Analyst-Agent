@@ -15,6 +15,9 @@ class AlertAnalysis:
     source_type: str = "Unknown"
     raw_input: str = ""
     normalized_context: str = ""
+    retrieved_knowledge: list[dict[str, str]] = field(default_factory=list)
+    threat_intelligence: list[dict[str, str]] = field(default_factory=list)
+    incident_report: dict[str, object] = field(default_factory=dict)
 
 
 @dataclass

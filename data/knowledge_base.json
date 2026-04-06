@@ -1,0 +1,38 @@
+[
+  {
+    "title": "MITRE ATT&CK - Brute Force",
+    "category": "MITRE ATT&CK",
+    "keywords": ["t1110", "brute", "failed", "password", "login", "spraying"],
+    "content": "Brute force activity involves repeated authentication attempts against one or more accounts. SOC teams usually validate source reputation, targeted accounts, lockout events, and whether any attempt eventually succeeded."
+  },
+  {
+    "title": "MITRE ATT&CK - Command and Scripting Interpreter",
+    "category": "MITRE ATT&CK",
+    "keywords": ["t1059", "powershell", "encodedcommand", "command", "script"],
+    "content": "Command and scripting interpreters such as PowerShell are common execution mechanisms. Analysts typically review process lineage, encoded arguments, parent processes, and follow-on persistence or credential access behavior."
+  },
+  {
+    "title": "Sigma Rule Guidance - Suspicious PowerShell Encoded Command",
+    "category": "Sigma",
+    "keywords": ["sigma", "powershell", "encodedcommand", "process", "detection"],
+    "content": "Sigma detections for encoded PowerShell commands often look for the EncodedCommand flag, unusual parent processes like Office apps, and execution outside normal admin tooling baselines."
+  },
+  {
+    "title": "SOC Playbook - Suspicious Authentication Activity",
+    "category": "SOC Playbook",
+    "keywords": ["playbook", "authentication", "admin", "ip", "failed", "mfa"],
+    "content": "A typical authentication investigation playbook checks account criticality, MFA results, source geography, repeated failures, success after failures, and nearby privilege changes before deciding on containment."
+  },
+  {
+    "title": "SOC Playbook - Potential Data Exfiltration",
+    "category": "SOC Playbook",
+    "keywords": ["rclone", "archive", "download", "s3", "exfiltration", "data"],
+    "content": "For possible exfiltration, analysts review outbound transfer volume, archive creation, cloud destinations, affected data owners, and whether the user or host recently showed signs of compromise."
+  },
+  {
+    "title": "MITRE ATT&CK - Remote Services",
+    "category": "MITRE ATT&CK",
+    "keywords": ["t1021", "wmic", "psexec", "remote", "lateral", "service"],
+    "content": "Remote services can be abused for lateral movement. Analysts usually check the source host, the target host, authentication method, spawned processes, and whether service accounts were involved."
+  }
+]

@@ -356,12 +356,56 @@ textarea {
   padding: 1rem 0;
 }
 
+.stacked-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.stacked-item {
+  background: #fbfdff;
+  border: 1px solid rgba(112, 144, 178, 0.18);
+  border-radius: 14px;
+  padding: 0.9rem;
+}
+
+.stacked-item span,
+.report-grid span {
+  color: #5b718a;
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+
+.stacked-item strong {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.stacked-item p,
+.report-grid p {
+  margin: 0;
+}
+
+.report-card {
+  margin-top: 1.4rem;
+}
+
+.report-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 @media (max-width: 1100px) {
   .page-shell,
   .hero,
   .workspace-grid,
   .card-grid,
-  .metrics-row {
+  .metrics-row,
+  .report-grid {
     grid-template-columns: 1fr;
   }
 
